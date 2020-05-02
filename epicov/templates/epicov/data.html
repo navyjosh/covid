@@ -1,0 +1,14 @@
+{% extends "epicov/base.html" %}
+{% load static %}
+{% block head %}
+    <script src="{% static "mapbox/mapbox-gl.js" %}"></script>
+    <script src="{% static "turf/turf.js" %}"></script>
+    <link rel="stylesheet" type="text/css" href="{% static "mapbox/mapbox-gl.css" %}">
+{% endblock %}
+
+{% block content %}
+    <div id='map' style='height:800px'></div>
+    <script src="{% static "js/data.js" %}"></script>
+
+{% endblock %}
+

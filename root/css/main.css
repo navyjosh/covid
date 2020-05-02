@@ -1,0 +1,11 @@
+body {
+  padding: 0;
+  margin: 0;
+  background: #f2f6e9;
+}
+.header{
+    background-image: url('/images/covid.jpg');
+    background-size: cover;
+    background-position: center;
+    position: relative;
+}

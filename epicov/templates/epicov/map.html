@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+{% load static %}
+<html>
+  <head>
+    <title>Interactive maps for Django web apps</title>
+    <script src='{% static "mapbox/mapbox-gl.js" %}'></script>
+    <link href='{% static "mapbox/mapbox-gl.css" %}' rel='stylesheet' />
+  </head>
+  <body>
+   <div id='map' width="100%" style='height:800px'></div>
+   <script>
+    mapboxgl.accessToken = '{{ mapbox_access_token }}';
+    var map = new mapboxgl.Map({
+     container: 'map',
+     style: 'mapbox://styles/mapbox/dark-v10',
+     center: [-75.1652, 39.9526],
+     zoom: 2
+    });
+   </script>
+  </body>
+</html>
