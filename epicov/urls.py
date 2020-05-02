@@ -7,5 +7,4 @@ urlpatterns = [
     path('project/', project, name='project'),
     path('data/', data, name='data'),
     path('map/', map, name='map'),
-    path('tmp/', tmp, name='tmp')
 ]
