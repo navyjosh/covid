@@ -37,9 +37,9 @@ class Command(BaseCommand):
                             gisaid_epi_isl = record.id.split("|")[-2]
                             record_id = str(record.id)
                             seq = str(record.seq)
-                            pd.concat(pd.Series({'ident': record_id, 'seq': seq})
-                                      .append(metadata.loc[metadata.gisaid_epi_isl == gisaid_epi_isl])
-                                      ).to_sql('epicov', engine, if_exists='append')
+                            pd.Series({'ident': record_id, 'seq': seq})\
+                                .append(metadata.loc[metadata.gisaid_epi_isl == gisaid_epi_isl])\
+                                .to_sql('epicov', engine, if_exists='append')
                             self.stdout.write('Wrote Record ID: %s to database' % gisaid_epi_isl)
 
                         except Exception as e:
