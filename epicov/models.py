@@ -12,7 +12,7 @@ class Epicov(models.Model):
     index = models.BigIntegerField(blank=True, null=True)
     gisaid_header = models.TextField(blank=True, null=True)
     seq = models.TextField(blank=True, null=True)
-    gisaid_epi_isl = models.TextField(primary_key=True)
+    gisaid_epi_isl = models.TextField(primary_key=True, unique=True)
     strain = models.TextField(blank=True, null=True)
     virus = models.TextField(blank=True, null=True)
     genbank_accession = models.TextField(blank=True, null=True)
