@@ -20,7 +20,7 @@ class Epicov(models.Model):
     division = models.TextField(blank=True, null=True)
     division_exposure = models.TextField(blank=True, null=True)
     genbank_accession = models.TextField(blank=True, null=True)
-    gisaid_epi_isl = models.TextField(blank=True, null=True)
+    gisaid_epi_isl = models.TextField(primary_key=True)
     host = models.TextField(blank=True, null=True)
     length = models.FloatField(blank=True, null=True)
     location = models.TextField(blank=True, null=True)
