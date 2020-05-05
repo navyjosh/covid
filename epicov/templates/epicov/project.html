@@ -1,9 +1,14 @@
 {% extends "epicov/base.html" %}
 
 {% block content %}
-
-  <h1>Project</h1>
-    <p>More details about this project</p>
-
-
+    <header class="page-header header container-fluid">
+    <div class="overlay"></div>
+    <div class="description">
+    <h1>AIM</h1>
+        <p>Create a site that will allow visitors to easily visualize the locations, relative sizes of breakouts, and spread of SARS-CoV-2 around the world.</p>
+        <p>The site’s user interface will consist of a global plotly map accompanied by visualizations of the aforementioned outbreak data linked to the coordinates of each outbreak’s epicenter. When a user hovers over and/or clicks one of these graphical representations, the site will display that outbreak’s data as text in a pop-up.</p>
+    <h1>SCOPE</h1>
+        <p>This project will use Django, Mapbox js, along with data from GISAID and metadata from Nextstrain to track the spread of Covid-19.  Strains will be distinguishable by colors.  The map will be augmented with various shapes using geojson elements</p>
+    </div>
+    </header>
 {% endblock %}

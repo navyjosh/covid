@@ -7,7 +7,6 @@
         <h1>ECES-450 Group Project</h1>
         <p>The scope of this project is to use covid-19 data from <a href="https://gisaid.org/">GISAID</a> along with metadata from <a href="https://nextstrain.org/">Nextstrain</a> in order to build a visualization that describes the geographical spread of covid-19 virus around the world with respect to time.  This project will implement various tools in python and/or javascript to build the visualization.</p>
         <button class="btn btn-outline-secondary btn-lg" onclick="window.location.href = '{% url "project" %}';">Tell Me More!</button>
-
     </div>
 </header>
 
@@ -15,9 +14,9 @@
 <div class="container features">
   <div class="row">
     <div class="col-lg-4 col-md-4 col-sm-12">
-      <h3 class="feature-title">Plotly</h3>
-      <img src="{% static "images/plotly-sm.png" %}" class="img-fluid">
-        <p><a href="https://plotly.com/">Plotly</a> is a technical computing company that develops online data analytics and visualization tools.</p>
+      <h3 class="feature-title">Mapbox</h3>
+      <img src="{% static "images/mapbox-sm.png" %}" class="img-fluid">
+        <p><a href="https://mapbox.com/">Mapbox</a> is an American provider of custom online maps for websites and applications such as Foursquare, Lonely Planet, Facebook, the Financial Times, The Weather Channel and Snapchat.
     </div>
     <div class="col-lg-4 col-md-4 col-sm-12">
       <h3 class="feature-title">Django</h3>
@@ -25,10 +24,11 @@
         <p><a href="https://www.djangoproject.com/">Django</a> (/ˈdʒæŋɡoʊ/ JANG-goh) is a Python-based free and open-source web framework.</p>
     </div>
     <div class="col-lg-4 col-md-4 col-sm-12">
-      <h3 class="feature-title">CDC</h3>
-      <img src="{% static "images/cdc.png" %}" class="img-fluid">
-        <p>(<a href="https://unsplash.com/@cdc">CDC</a>) Credit to CDC for the illustration used as the background. </p>
+      <h3 class="feature-title">GISAID</h3>
+      <img src="{% static "images/gisaid.png" %}" class="img-fluid">
+        <p><a href="https://gisaid.org/">GISAID</a> is a public–private partnership between the German government and the nonprofit organization Friends of GISAID that provides public access to the most complete collection of genetic sequence data of influenza viruses and related clinical and epidemiological data through its database (named EpiFlu).[1] The database is hosted by the German government.</p>
     </div>
   </div>
 </div>
+    <!-- https://unsplash.com/@cdc -->
 {% endblock %}
