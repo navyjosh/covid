@@ -24,7 +24,7 @@ class Command(BaseCommand):
             fn = None
             for file in files:
                 if ".fasta" in file:
-                    fn = file
+                    fn = os.path.join(BASE_DIR, 'raw', file)
                     break
             if fn:
                 engine = create_engine('postgresql://covid:%s@localhost:5432/covid' % quote_plus('nutrit1on+'))
