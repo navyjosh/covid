@@ -40,7 +40,7 @@ class Command(BaseCommand):
                             ids.append(record.id)
                             seqs.append(str(record.seq))
                             i += 1
-                            if i == 25:
+                            if i == 1:
                                 self.stdout.write('Wrote 25 records to database')
                                 pd.DataFrame({'ident': ids, 'seq': seqs, 'gisaid_epi_isl': gisaid_epi_isls}) \
                                     .merge(metadata, how='inner', on='gisaid_epi_isl') \
