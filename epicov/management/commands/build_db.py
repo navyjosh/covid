@@ -30,16 +30,19 @@ class Command(BaseCommand):
                 engine = create_engine('postgresql://covid:%s@localhost:5432/covid' % quote_plus('nutrit1on+'))
                 with open(fn, 'r') as fh:
                     missing_epi = []
+                    i = 0
                     for record in SeqIO.parse(fh, "fasta"):
+                        i += 1
                         try:
                             gisaid_epi_isl = record.id.split("|")[-2]
                             record_id = record.id
                             seq = str(record.seq)
-                            pd.Series({'ident': record_id, 'seq': seq}).append(metadata.loc[metadata.gisaid_epi_isl == gisaid_epi_isl]).to_sql('covid', engine, if_exists='fail')
+                            pd.Series({'ident': record_id, 'seq': seq}).append(metadata.loc[metadata.gisaid_epi_isl == gisaid_epi_isl]).to_sql('covid', engine, if_exists='append')
                             self.stdout.write('Wrote Record ID: %s to database')
 
                         except Exception as e:
                             self.stdout.write(str(e))
+                        if i >= 10: break
         except Exception as e:
             self.stdout.write(str(e))
 
