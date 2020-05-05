@@ -33,14 +33,14 @@ class Command(BaseCommand):
                     seqs = []
                     gisaid_epi_isls = []
                     missing_epi = []
-                    i=0
+                    i = 0
                     for record in SeqIO.parse(fh, "fasta"):
                         try:
                             gisaid_epi_isls.append(record.id.split("|")[-2])
                             ids.append(record.id)
                             seqs.append(str(record.seq))
                             i += 1
-                            if i == 25:
+                            if i == 50:
                                 self.stdout.write('Wrote 25 records to database')
                                 pd.DataFrame({'gisaid_header': ids, 'seq': seqs, 'gisaid_epi_isl': gisaid_epi_isls}) \
                                     .merge(metadata, how='inner', on='gisaid_epi_isl') \
@@ -48,10 +48,10 @@ class Command(BaseCommand):
                                 ids = []
                                 seqs = []
                                 gisaid_epi_isls = []
-                                missing_epi = []
                                 i = 0
-                                break
                         except Exception as e:
                             missing_epi.append(record.id)
         except Exception as e:
             self.stdout.write(str(e))
+
+        self.stdout.write("\n,".join(missing_epi))
