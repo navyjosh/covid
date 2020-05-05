@@ -29,33 +29,29 @@ class Command(BaseCommand):
             if fn:
                 engine = create_engine('postgresql://covid:%s@localhost:5432/covid' % quote_plus('nutrit1on+'))
                 with open(fn, 'r') as fh:
+                    ids = []
+                    seqs = []
+                    gisaid_epi_isls = []
                     missing_epi = []
-                    i = 0
+                    i=0
                     for record in SeqIO.parse(fh, "fasta"):
-                        i += 1
                         try:
-                            gisaid_epi_isl = record.id.split("|")[-2]
-                            record_id = str(record.id)
-                            seq = str(record.seq)
-                            pd.Series({'ident': record_id, 'seq': seq})\
-                                .append(metadata.loc[metadata.gisaid_epi_isl == gisaid_epi_isl])\
-                                .to_sql('epicov', engine, if_exists='append')
-                            self.stdout.write('Wrote Record ID: %s to database' % gisaid_epi_isl)
-
+                            gisaid_epi_isls.append(record.id.split("|")[-2])
+                            ids.append(record.id)
+                            seqs.append(str(record.seq))
+                            i += 1
+                            if i == 25:
+                                self.stdout.write('Wrote 25 records to database')
+                                pd.DataFrame({'ident': ids, 'seq': seqs, 'gisaid_epi_isl': gisaid_epi_isls}) \
+                                    .merge(metadata, how='inner', on='gisaid_epi_isl') \
+                                    .to_sql('epicov', engine, if_exists='append')
+                                ids = []
+                                seqs = []
+                                gisaid_epi_isls = []
+                                missing_epi = []
+                                i = 0
+                                break
                         except Exception as e:
-                            self.stdout.write(str(e))
-                        if i >= 10: break
+                            missing_epi.append(record.id)
         except Exception as e:
             self.stdout.write(str(e))
-
-
-            df = pd.DataFrame
-
-
-
-
-
-
-
-
-
