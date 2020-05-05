@@ -27,7 +27,7 @@ class Command(BaseCommand):
                     fn = os.path.join(BASE_DIR, 'raw', file)
                     break
             if fn:
-                engine = create_engine('postgresql://covid:%s@localhost:5432/covid' % quote_plus('nutrit1on+'))
+                engine = create_engine('postgresql://covid:%s@localhost:5432/covid' % quote_plus('nutrit1on+'), echo=True)
                 with open(fn, 'r') as fh:
                     ids = []
                     seqs = []
