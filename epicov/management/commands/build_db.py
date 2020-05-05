@@ -42,7 +42,7 @@ class Command(BaseCommand):
                             i += 1
                             if i == 1:
                                 self.stdout.write('Wrote 25 records to database')
-                                pd.DataFrame({'ident': ids, 'seq': seqs, 'gisaid_epi_isl': gisaid_epi_isls}) \
+                                pd.DataFrame({'gisaid_header': ids, 'seq': seqs, 'gisaid_epi_isl': gisaid_epi_isls}) \
                                     .merge(metadata, how='inner', on='gisaid_epi_isl') \
                                     .to_sql('epicov', engine, if_exists='append')
                                 ids = []
