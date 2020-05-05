@@ -9,10 +9,10 @@ from django.db import models
 
 
 class Epicov(models.Model):
-    index = models.IntegerField(primary_key=True)
+    index = models.IntegerField(blank=True, null=True)
     strain = models.TextField(blank=True, null=True)
     virus = models.TextField(blank=True, null=True)
-    gisaid_epi_isl = models.TextField(blank=True, null=True)
+    gisaid_epi_isl = models.TextField(primary_key=True)
     genbank_accession = models.TextField(blank=True, null=True)
     date = models.TextField(blank=True, null=True)
     region = models.TextField(blank=True, null=True)
