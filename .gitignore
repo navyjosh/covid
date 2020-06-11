@@ -7,3 +7,4 @@ static/
 raw/
 /epicov/migrations/0001_initial.py
 /epicov/migrations/__init__.py
+/epicov/migrations/
