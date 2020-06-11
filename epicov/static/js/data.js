@@ -7,70 +7,70 @@ let map = new mapboxgl.Map({
     zoom: 2
 });
 
-map.on('load', () => {
-    map.addSource('lineSource', {
-        type: 'geojson',
-        data: {
-            "type": "Feature",
-            "geometry": {
-                "type": "LineString",
-                "properties": {},
-                "coordinates": [
-                    [-122.6953125,39.90973623453719],
-                    [-75.9375,41.77131167976407]
-                ]
-            }
-        }
-    })
-    map.addSource('pointsSource', {
-        type: 'geojson',
-        data: {
-            "type": "FeatureCollection",
-            "features": [
-                {
-                    "type": "Feature",
-                    "properties": {},
-                    "geometry": {
-                        "type": "Point",
-                        "coordinates": [
-                            -122.6953125,
-                            39.36827914916014
-                        ]
-                    }
-                },
-                {
-                    "type": "Feature",
-                    "properties": {},
-                    "geometry": {
-                        "type": "Point",
-                        "coordinates": [
-                            -76.2890625,
-                            40.97989806962013
-                        ]
-                    }
-                },
-            ]
-        }
-    });
-    map.addLayer({
-        id: 'line',
-        source: 'lineSource',
-        type: 'line',
-        paint: {
-            'line-color': 'red',
-            'line-width': 8,
-        }
-    })
-    map.addLayer({
-        id: 'points',
-        source: 'pointsSource',
-        type: 'circle',
-        paint: {
-            'circle-radius': 10,
-            'circle-color': 'skyblue',
-        }
-    });
-});
+// map.on('load', () => {
+//     map.addSource('lineSource', {
+//         type: 'geojson',
+//         data: {
+//             "type": "Feature",
+//             "geometry": {
+//                 "type": "LineString",
+//                 "properties": {},
+//                 "coordinates": [
+//                     [-122.6953125,39.90973623453719],
+//                     [-75.9375,41.77131167976407]
+//                 ]
+//             }
+//         }
+//     })
+//     map.addSource('pointsSource', {
+//         type: 'geojson',
+//         data: {
+//             "type": "FeatureCollection",
+//             "features": [
+//                 {
+//                     "type": "Feature",
+//                     "properties": {},
+//                     "geometry": {
+//                         "type": "Point",
+//                         "coordinates": [
+//                             -122.6953125,
+//                             39.36827914916014
+//                         ]
+//                     }
+//                 },
+//                 {
+//                     "type": "Feature",
+//                     "properties": {},
+//                     "geometry": {
+//                         "type": "Point",
+//                         "coordinates": [
+//                             -76.2890625,
+//                             40.97989806962013
+//                         ]
+//                     }
+//                 },
+//             ]
+//         }
+//     });
+//     map.addLayer({
+//         id: 'line',
+//         source: 'lineSource',
+//         type: 'line',
+//         paint: {
+//             'line-color': 'red',
+//             'line-width': 8,
+//         }
+//     })
+//     map.addLayer({
+//         id: 'points',
+//         source: 'pointsSource',
+//         type: 'circle',
+//         paint: {
+//             'circle-radius': 10,
+//             'circle-color': 'skyblue',
+//         }
+//     });
+// });
 
 // var map = new mapboxgl.Map({
 // container: 'map',

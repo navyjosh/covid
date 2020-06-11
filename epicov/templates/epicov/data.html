@@ -9,6 +9,41 @@
 {% block content %}
     <div id='map' style='height:800px'></div>
     <script src="{% static "js/data.js" %}"></script>
+{% endblock %}
 
+{% block map %}
+    <script>
+    map.on('load', () => {
+        map.addSource('points', {
+            type: 'geojson',
+            data: {
+              "type": "FeatureCollection",
+              'features': [
+                  {% for cov in q %}
+                            {
+                                'type': 'Feature',
+                                'geometry': {
+                                    'type': 'Point',
+                                    'coordinates': [
+                                        {{ cov.lon }},
+                                        {{ cov.lat }}
+                                    ]
+                                }
+                            },
+                    {% endfor %}
+                ]
+            }
+        });
+        map.addLayer({
+        id: 'newpoints',
+        source: 'points',
+        type: 'circle',
+        paint: {
+             'circle-radius': 7,
+             'circle-color': 'skyblue',
+         }
+    })
+});
+</script>
 {% endblock %}
 

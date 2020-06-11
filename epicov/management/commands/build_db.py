@@ -17,17 +17,19 @@ class Command(BaseCommand):
         try:
             data_dir = os.path.join(BASE_DIR, 'raw')
             files = os.listdir(data_dir)
-            meta_data_url = "https://github.com/nextstrain/ncov/blob/master/data/metadata.tsv?raw=true"
+            # meta_data_url = "https://github.com/nextstrain/ncov/blob/master/data/metadata.tsv?raw=true"
             fn = os.path.join(data_dir, 'metadata.tsv')
-            urllib.request.urlretrieve(meta_data_url, fn)
+            # urllib.request.urlretrieve(meta_data_url, fn)
             metadata = pd.read_csv(fn, delimiter='\t')
             fn = None
             for file in files:
                 if ".fasta" in file:
                     fn = os.path.join(BASE_DIR, 'raw', file)
+                    fn = os.path.join(BASE_DIR, 'raw', file)
                     break
             if fn:
-                engine = create_engine('postgresql://covid:%s@localhost:5432/covid' % quote_plus('nutrit1on+'), echo=True)
+                # engine = create_engine('postgresql://covid:%s@localhost:5432/covid' % quote_plus('nutrit1on+'))
+                engine = create_engine('sqlite:///example.db')
                 with open(fn, 'r') as fh:
                     ids = []
                     seqs = []
@@ -51,7 +53,8 @@ class Command(BaseCommand):
                                 i = 0
                         except Exception as e:
                             missing_epi.append(record.id)
+
         except Exception as e:
             self.stdout.write(str(e))
 
-        self.stdout.write("\n,".join(missing_epi))
+        self.stdout.write("\n".join(missing_epi))
